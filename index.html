@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFA Driver's License Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="start-screen">
+            <h1>SOFA Driver's License Prerequisite Test</h1>
+            <p>This test is a prerequisite for obtaining your SOFA driver's license. It is designed for U.S. Air Force, U.S. Space Force, DoDEA personnel, Air Force contractors, and their dependents.</p>
+            <p>You have <strong>15 minutes</strong> to complete the test. You must score 80% or higher to pass.</p>
+            <div class="name-input-container">
+                <label for="userName">Enter your full name:</label>
+                <input type="text" id="userName" placeholder="First Name Last Name">
+                <label for="userEmail">Enter your email address:</label>
+                <input type="email" id="userEmail" placeholder="your.email@example.com">
+            </div>
+            <button id="start-btn">Start Test</button>
+            <div id="error-message" class="hide" style="color: red; margin-top: 10px;"></div>
+        </div>
+
+        <div id="quiz-screen" class="hide">
+            <div id="timer" style="font-size: 1.5em; font-weight: bold; text-align: center; color: #bf0a30;">15:00</div>
+            <div id="question-container">
+                <div id="question">Question text</div>
+                <div id="answer-buttons" class="btn-grid">
+                    <button class="btn">Answer 1</button>
+                    <button class="btn">Answer 2</button>
+                    <button class="btn">Answer 3</button>
+                    <button class="btn">Answer 4</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="hide">
+            <h2>Test Completed</h2>
+            <p>Your Score: <span id="score">0</span>%</p>
+            <div id="result-message"></div>
+            <button id="email-results-btn" class="btn hide" style="background-color: #28a745;">Email Results to Pass & Registration</button>
+            <button id="restart-btn" class="btn">Restart Test</button>
+        </div>
+
+        <div id="certificate-screen" class="hide">
+            <div id="certificate">
+                <div class="cert-header">
+                    <h1>Certificate of Completion</h1>
+                    <h2>SOFA Driver's License Training</h2>
+                </div>
+                <div class="cert-body">
+                    <p>This certifies that</p>
+                    <h2 id="cert-name">[Name Here]</h2>
+                    <p>has successfully completed the SOFA driver's license written examination with a passing score of <strong id="cert-score">[Score]</strong>%.</p>
+                    <p>Date of Completion: <span id="cert-date">[Date Here]</span></p>
+                </div>
+                <div class="cert-footer">
+                    <p>This certificate must be presented to the Pass & Registration office to receive your USFJ Form 4EJ.</p>
+                </div>
+            </div>
+            <button id="print-btn" class="btn">Print Certificate</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

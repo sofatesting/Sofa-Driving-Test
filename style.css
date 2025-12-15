@@ -1,0 +1,154 @@
+/* General Styling */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    /*
+    --- CHOOSE YOUR BACKGROUND THEME ---
+    You can choose between two themes: Okinawa or Driving.
+    To select a theme, remove the '/*' and '*/' from the 'background-image' line you want to use.
+    Make sure the other one is commented out (starts with '/*' and ends with '*/').
+    */
+
+    /* --- Theme 1: Okinawa Inspired --- (Uncomment the line below to use) */
+    background-image: url('images.pexels.com/photos/3811867/pexels-photo-3811867.jpeg');
+
+    /* --- Theme 2: Driving Inspired --- (Comment out the line above and uncomment the line below to use) */
+    /* background-image: url('https://images.pexels.com/photos/1545590/pexels-photo-1545590.jpeg'); */
+
+
+    /* --- Background Image Settings (Do not change) --- */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background in place while scrolling */
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Main Quiz Container */
+.container {
+    width: 800px;
+    max-width: 90%;
+    /* Semi-transparent white to make text readable over the background image */
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.hide {
+    display: none !important;
+}
+
+h1, h2 {
+    color: #002664; /* Dark Blue */
+}
+
+#start-screen p {
+    line-height: 1.6;
+}
+
+.name-input-container {
+    margin: 20px 0;
+}
+
+.name-input-container label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#userName, #userEmail {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #0055a4; /* Medium Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background-color: #003366; /* Darker Blue */
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#question-container {
+    font-size: 1.2rem;
+}
+
+/* Certificate Styles */
+#certificate {
+    border: 10px solid #002664;
+    padding: 40px;
+    text-align: center;
+    background-color: #fdfdfd;
+}
+
+.cert-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.cert-body p {
+    font-size: 1.2rem;
+}
+
+#cert-name {
+    font-size: 2rem;
+    color: #bf0a30; /* Red */
+    margin: 20px 0;
+}
+
+.cert-footer {
+    margin-top: 40px;
+    font-style: italic;
+}
+
+@media print {
+    body {
+        background-image: none;
+        background-color: white;
+    }
+    .container {
+        box-shadow: none;
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+    }
+    #certificate-screen, #certificate {
+        display: block;
+    }
+    .btn, #result-screen, #quiz-screen, #start-screen, #timer {
+        display: none;
+    }
+}
