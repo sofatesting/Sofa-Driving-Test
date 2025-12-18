@@ -1,154 +1,258 @@
-/* General Styling */
-*, *::before, *::after {
-    box-sizing: border-box;
-    font-family: sans-serif;
+/* --- Global Styles & Fonts --- */
+:root {
+    --primary-color: #0f62fe; /* IBM Blue */
+    --secondary-color: #6f6f6f; /* Gray */
+    --background-color: #f4f4f4;
+    --surface-color: #ffffff;
+    --text-color: #161616;
+    --light-text-color: #ffffff;
+    --error-color: #da1e28;
+    --success-color: #24a148;
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Lora', serif;
 }
 
 body {
-    /*
-    --- CHOOSE YOUR BACKGROUND THEME ---
-    You can choose between two themes: Okinawa or Driving.
-    To select a theme, remove the '/*' and '*/' from the 'background-image' line you want to use.
-    Make sure the other one is commented out (starts with '/*' and ends with '*/').
-    */
-
-    /* --- Theme 1: Okinawa Inspired --- (Uncomment the line below to use) */
-    background-image: url('images.pexels.com/photos/3811867/pexels-photo-3811867.jpeg');
-
-    /* --- Theme 2: Driving Inspired --- (Comment out the line above and uncomment the line below to use) */
-    /* background-image: url('https://images.pexels.com/photos/1545590/pexels-photo-1545590.jpeg'); */
-
-
-    /* --- Background Image Settings (Do not change) --- */
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    background-image: url('background.jpg');
     background-size: cover;
+    background-attachment: fixed;
     background-position: center;
-    background-attachment: fixed; /* Keeps the background in place while scrolling */
-    color: #333;
-    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    padding: 2rem;
+    color: var(--text-color);
 }
 
-/* Main Quiz Container */
+/* --- Main Container --- */
 .container {
-    width: 800px;
-    max-width: 90%;
-    /* Semi-transparent white to make text readable over the background image */
-    background-color: rgba(255, 255, 255, 0.92);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.hide {
-    display: none !important;
-}
-
-h1, h2 {
-    color: #002664; /* Dark Blue */
-}
-
-#start-screen p {
-    line-height: 1.6;
-}
-
-.name-input-container {
-    margin: 20px 0;
-}
-
-.name-input-container label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-#userName, #userEmail {
     width: 100%;
-    padding: 10px;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Typography --- */
+h1, h2 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+p, li, label {
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* --- Bento Grid Layout --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.bento-box {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.bento-box h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.bento-box ul {
+    padding-left: 20px;
+}
+
+/* --- Forms & Buttons --- */
+.start-form, .claim-screen {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="email"], input[type="text"] {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 1rem;
+    font-family: var(--font-primary);
+}
+
+.acknowledgement {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.secondary-btn {
+    background-color: var(--secondary-color);
+}
+
+.link {
+    color: var(--primary-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* --- Quiz Screen --- */
+#quiz-screen {
+    text-align: center;
+}
+
+#timer {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: var(--background-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 20px;
+    z-index: 10;
+}
+
+#question {
+    font-size: 1.5rem;
+    font-family: var(--font-secondary);
+    margin-bottom: 2rem;
 }
 
 .btn-grid {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 10px;
-    margin-top: 20px;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
-.btn {
-    background-color: #0055a4; /* Medium Blue */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 15px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+@media (min-width: 600px) {
+    .btn-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.btn:hover {
-    background-color: #003366; /* Darker Blue */
+/* --- Results & Final Screens --- */
+.score-display {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.controls {
+#result-message {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.final-instructions {
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.final-actions {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-#question-container {
-    font-size: 1.2rem;
-}
-
-/* Certificate Styles */
-#certificate {
-    border: 10px solid #002664;
-    padding: 40px;
+/* --- Certificate --- */
+#certificate-wrapper {
+    border: 10px solid var(--primary-color);
+    padding: 2rem;
     text-align: center;
-    background-color: #fdfdfd;
+    background-color: #fff;
+    margin-bottom: 2rem;
+}
+.cert-header h1 { color: #161616; font-size: 2rem; }
+.cert-header h2 { color: var(--secondary-color); font-size: 1.2rem; }
+.cert-body h2 { color: var(--primary-color); }
+
+/* --- Utility --- */
+.hide {
+    display: none;
 }
 
-.cert-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
+#error-message {
+    color: var(--error-color);
+    font-weight: bold;
+    text-align: center;
 }
 
-.cert-body p {
-    font-size: 1.2rem;
-}
-
-#cert-name {
-    font-size: 2rem;
-    color: #bf0a30; /* Red */
-    margin: 20px 0;
-}
-
-.cert-footer {
-    margin-top: 40px;
-    font-style: italic;
-}
-
+/* Print Styles */
 @media print {
     body {
         background-image: none;
-        background-color: white;
+        padding: 0;
     }
     .container {
         box-shadow: none;
-        max-width: 100%;
-        width: 100%;
         padding: 0;
+        backdrop-filter: none;
+        background-color: transparent;
     }
-    #certificate-screen, #certificate {
+    #certificate-wrapper {
         display: block;
     }
-    .btn, #result-screen, #quiz-screen, #start-screen, #timer {
-        display: none;
+    .hide-on-print, #start-screen, #quiz-screen, #result-screen, #claim-screen, #final-instructions-screen .final-actions, .final-instructions {
+        display: none !important;
     }
 }

@@ -3,63 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOFA Driver's License Test</title>
+    <title>U.S. Forces Japan - SOFA Driver's Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
+        <!-- Screen 1: Welcome and Instructions -->
         <div id="start-screen">
-            <h1>SOFA Driver's License Prerequisite Test</h1>
-            <p>This test is a prerequisite for obtaining your SOFA driver's license. It is designed for U.S. Air Force, U.S. Space Force, DoDEA personnel, Air Force contractors, and their dependents.</p>
-            <p>You have <strong>15 minutes</strong> to complete the test. You must score 80% or higher to pass.</p>
-            <div class="name-input-container">
-                <label for="userName">Enter your full name:</label>
-                <input type="text" id="userName" placeholder="First Name Last Name">
-                <label for="userEmail">Enter your email address:</label>
-                <input type="email" id="userEmail" placeholder="your.email@example.com">
-            </div>
-            <button id="start-btn">Start Test</button>
-            <div id="error-message" class="hide" style="color: red; margin-top: 10px;"></div>
-        </div>
+            <header class="main-header">
+                <h1>SOFA Driver's License Prerequisite Exam</h1>
+                <p class="subtitle">U.S. Forces Japan</p>
+            </header>
 
-        <div id="quiz-screen" class="hide">
-            <div id="timer" style="font-size: 1.5em; font-weight: bold; text-align: center; color: #bf0a30;">15:00</div>
-            <div id="question-container">
-                <div id="question">Question text</div>
-                <div id="answer-buttons" class="btn-grid">
-                    <button class="btn">Answer 1</button>
-                    <button class="btn">Answer 2</button>
-                    <button class="btn">Answer 3</button>
-                    <button class="btn">Answer 4</button>
+            <div class="bento-grid">
+                <div class="bento-box study-guide">
+                    <h2>Study First</h2>
+                    <p>Review the official study guide before starting. You must close the guide before the test begins.</p>
+                    <a href="https://www.kadena.af.mil/Portals/40/documents/Pass%20and%20ID%20Docs/Driver's%20Study%20Guide%20Mar%202025.pdf?ver=WgQMP3Q5Hi8gj5jsASIrXw%3d%3d" target="_blank" class="btn secondary-btn">Open Study Guide</a>
+                </div>
+                <div class="bento-box rules">
+                    <h2>Test Rules</h2>
+                    <ul>
+                        <li><strong>Time Limit:</strong> 15 minutes</li>
+                        <li><strong>Passing Score:</strong> 80% or higher</li>
+                        <li><strong>Attempts:</strong> Two attempts are permitted per email address in a 24-hour period.</li>
+                    </ul>
                 </div>
             </div>
+
+            <div class="start-form">
+                <label for="userEmail">Enter your email to proceed:</label>
+                <input type="email" id="userEmail" placeholder="your.email@domain.com" required>
+                <div class="acknowledgement">
+                    <input type="checkbox" id="rules-acknowledged">
+                    <label for="rules-acknowledged">I have closed the study guide and am ready to begin.</label>
+                </div>
+                <button id="start-btn" class="btn">Start Test</button>
+                <p id="error-message" class="hide"></p>
+            </div>
         </div>
 
+        <!-- Screen 2: Quiz -->
+        <div id="quiz-screen" class="hide">
+            <div id="timer">15:00</div>
+            <div id="question-container">
+                <h2 id="question"></h2>
+                <div id="answer-buttons" class="btn-grid"></div>
+            </div>
+        </div>
+
+        <!-- Screen 3: Results -->
         <div id="result-screen" class="hide">
             <h2>Test Completed</h2>
-            <p>Your Score: <span id="score">0</span>%</p>
-            <div id="result-message"></div>
-            <button id="email-results-btn" class="btn hide" style="background-color: #28a745;">Email Results to Pass & Registration</button>
-            <button id="restart-btn" class="btn">Restart Test</button>
+            <p class="score-display">Your Score: <span id="score">0</span>%</p>
+            <p id="result-message"></p>
+            <button id="post-test-btn" class="btn"></button>
         </div>
 
-        <div id="certificate-screen" class="hide">
-            <div id="certificate">
-                <div class="cert-header">
-                    <h1>Certificate of Completion</h1>
-                    <h2>SOFA Driver's License Training</h2>
-                </div>
-                <div class="cert-body">
-                    <p>This certifies that</p>
-                    <h2 id="cert-name">[Name Here]</h2>
-                    <p>has successfully completed the SOFA driver's license written examination with a passing score of <strong id="cert-score">[Score]</strong>%.</p>
-                    <p>Date of Completion: <span id="cert-date">[Date Here]</span></p>
-                </div>
-                <div class="cert-footer">
-                    <p>This certificate must be presented to the Pass & Registration office to receive your USFJ Form 4EJ.</p>
-                </div>
+        <!-- Screen 4: Claim Certificate -->
+        <div id="claim-screen" class="hide">
+            <h2>Generate Your Certificate</h2>
+            <p>Enter your full name exactly as it should appear on the certificate.</p>
+            <input type="text" id="userName" placeholder="First Name Last Name" required>
+            <button id="generate-btn" class="btn">Generate Certificate</button>
+        </div>
+
+        <!-- Screen 5: Final Certificate & Instructions -->
+        <div id="final-screen" class="hide">
+            <div id="certificate-wrapper">
+                <!-- Certificate will be injected here -->
             </div>
-            <button id="print-btn" class="btn">Print Certificate</button>
+            <h2>Final Steps for Your SOFA License</h2>
+            <p>Congratulations on passing. Follow these instructions carefully:</p>
+            <ol class="final-instructions">
+                <li>Download and complete the application form: <a href="https://www.kadena.af.mil/Portals/40/documents/Pass%20and%20ID%20Docs/KADENA%20AB%20OPERATOR'S%20PERMIT%20APPLICATION.pdf?ver=4dgoeFDJ-VYErIIUW1nocA%3d%3d" target="_blank" class="link">Download Application</a>.</li>
+                <li>Gather your documents: Printed Certificate, completed application, Stateside License, Military ID, and Orders/LOA.</li>
+                <li>Take all documents to the **Gate 1 VCC** for processing.</li>
+            </ol>
+            <div class="final-actions">
+                <button id="print-btn" class="btn">Print Certificate</button>
+                <button id="restart-btn" class="btn secondary-btn">Start Over</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
